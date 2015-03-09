@@ -81,6 +81,9 @@ class Environment(dict):
     if platform.system() == 'Darwin':
         arduino_dist_dir_guesses.insert(0, '/Applications/Arduino.app/Contents/Resources/Java')
 
+    if os.environ.get('ARDUINO_HOME') is not None:
+        arduino_dist_dir_guesses.insert(0, os.environ['ARDUINO_HOME'])
+
     default_board_model = 'uno'
     ino = sys.argv[0]
 
